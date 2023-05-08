@@ -25,8 +25,8 @@ export default class Country {
     this.cities = countryCities;
   }
 
-  checkIfDone(coutryNames: string[], iterationCount: number) {
-    if (!this.isDone && this.cities.filter((c) => c.checkIfDone(coutryNames, iterationCount)).length === this.cities.length) {
+  checkIfDone(countryNames: string[], iterationCount: number) {
+    if (!this.isDone && this.cities.filter((c) => c.checkIfDone(countryNames, iterationCount)).length === this.cities.length) {
       this.isDone = true;
       this.daysGone = iterationCount;
 

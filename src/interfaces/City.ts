@@ -23,14 +23,14 @@ export default class City {
     this.coinsByCountry.set(countryName, 1000000);
   }
 
-  public addCoins(coins: number, coutry: string) {
-    const currCoins = this.coinsByCountry.get(coutry) ?? 0;
-    this.coinsByCountry.set(coutry, currCoins + coins);
+  public addCoins(coins: number, country: string) {
+    const currCoins = this.coinsByCountry.get(country) ?? 0;
+    this.coinsByCountry.set(country, currCoins + coins);
   }
 
-  public removeCoins(coins: number, coutry: string) {
-    const currCoins = this.coinsByCountry.get(coutry) ?? 0;
-    this.coinsByCountry.set(coutry, currCoins - coins);
+  public removeCoins(coins: number, country: string) {
+    const currCoins = this.coinsByCountry.get(country) ?? 0;
+    this.coinsByCountry.set(country, currCoins - coins);
   }
 
   public checkIfDone(countries: string[], iterationCount: number) {
