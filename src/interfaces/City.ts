@@ -1,3 +1,5 @@
+const START_COINS_AMOUNT = 1000000;
+
 export default class City {
   public readonly country: string;
   public readonly x: number;
@@ -20,7 +22,7 @@ export default class City {
     this.country = countryName;
     this.x = xCoord;
     this.y = yCoord;
-    this.coinsByCountry.set(countryName, 1000000);
+    this.coinsByCountry.set(countryName, START_COINS_AMOUNT);
   }
 
   public addCoins(coins: number, country: string) {
@@ -33,15 +35,13 @@ export default class City {
     this.coinsByCountry.set(country, currCoins - coins);
   }
 
-  public checkIfDone(countries: string[], iterationCount: number) {
-    if (!this.isDone) {
-      const motifCount = countries.filter((country) => (this.coinsByCountry.get(country) ?? 0) > 0).length;
-      this.isDone = motifCount === countries.length;
-
-      if (this.isDone) {
-        // console.log(`${this.getCoords()} is done in ${iterationCount}`);
-      }
+  public checkIfDone(countries: string[]) {
+    if (this.isDone) {
+      return true;
     }
+
+    const motifCount = countries.filter((country) => (this.coinsByCountry.get(country) ?? 0) > 0).length;
+    this.isDone = motifCount === countries.length;
 
     return this.isDone
   }

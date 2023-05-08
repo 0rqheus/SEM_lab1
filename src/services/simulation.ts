@@ -8,8 +8,9 @@ export function createCities(countries: CountryParams[]) {
 
   // create cities
   for (const country of countries) {
-    for (let i = country.xl; i <= country.xh; i++) {
-      for (let j = country.yl; j <= country.yh; j++) {
+    const { xl, xh, yl, yh } = country;
+    for (let i = xl; i <= xh; i++) {
+      for (let j = yl; j <= yh; j++) {
         const coords = `${i}:${j}`;
         if (!citiesMap.has(coords)) {
           citiesMap.set(`${i}:${j}`, new City(country.name, i, j));
@@ -43,7 +44,6 @@ export function simulate(cities: City[], countryNames: string[]) {
   let i = 1;
 
   while (doneCountries !== countries.length) {
-    // console.log(`ITERATION: ${i}`);
     const coinsToAdd = [] as [City, number, string][]
 
     for (const city of cities) {
@@ -64,7 +64,6 @@ export function simulate(cities: City[], countryNames: string[]) {
     doneCountries = countries.filter((c) => c.checkIfDone(countryNames, i)).length;
 
     i += 1;
-    // console.log('\n');
   }
 
   return countries;

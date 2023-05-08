@@ -26,13 +26,16 @@ export default class Country {
   }
 
   checkIfDone(countryNames: string[], iterationCount: number) {
-    if (!this.isDone && this.cities.filter((c) => c.checkIfDone(countryNames, iterationCount)).length === this.cities.length) {
+    if(this.isDone) {
+      return true;
+    }
+    
+    if (this.cities.filter((c) => c.checkIfDone(countryNames)).length === this.cities.length) {
       this.isDone = true;
       this.daysGone = iterationCount;
-
-      // console.log(`${this.name} is done in ${iterationCount}`);
+      return true;
     }
 
-    return this.isDone;
+    return false;
   }
 }
