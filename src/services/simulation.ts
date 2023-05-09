@@ -22,8 +22,9 @@ export function createCities(countries: CountryParams[]) {
   }
 
   // assign neighbours
+  const connectedCountries = new Set<string>();
   for (const city of citiesMap.values()) {
-    const { x, y } = city;
+    const { x, y, country } = city;
 
     const neighbours = [
       citiesMap.get(`${x + 1}:${y}`),
@@ -33,6 +34,14 @@ export function createCities(countries: CountryParams[]) {
     ].filter((c) => c != undefined) as City[];
 
     city.neighbours = neighbours;
+
+    if(!connectedCountries.has(country) && neighbours.some((n) => n.country !== country)) {
+      connectedCountries.add(country);
+    }
+  }
+
+  if(connectedCountries.size != countries.length) {
+    throw new Error('Not all countries are connected!');
   }
 
   return Array.from(citiesMap.values());

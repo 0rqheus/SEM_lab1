@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node dist/index",
     "start:dev": "npm run build && npm run start",
-    "build": "build:clear && tsc --project tsconfig.json",
+    "build": "npm run build:clear && tsc --project tsconfig.json",
     "build:clear": "rimraf dist/",
     "test": "jest"
   },
