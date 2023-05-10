@@ -11,7 +11,7 @@ export async function getUserInput() {
 
   while (userInput !== '0') {
     userInput = await rl.question('Enter number of countries:\n');
-    const countriesCount = z.number().parse(Number(userInput));
+    const countriesCount = z.number().max(20).parse(Number(userInput));
     const arr: CountryParams[] = []
 
     for (let i = 0; i < countriesCount; i++) {
