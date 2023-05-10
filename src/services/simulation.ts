@@ -40,7 +40,7 @@ export function createCities(countries: CountryParams[]) {
     }
   }
 
-  if(connectedCountries.size != countries.length) {
+  if(connectedCountries.size != countries.length && countries.length !== 1) {
     throw new Error('Not all countries are connected!');
   }
 

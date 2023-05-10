@@ -26,7 +26,7 @@ test('France (1:1-2:2), Spain (3:1-4:3)', () => {
   expect(results.find((r) => r.name === 'Spain')?.daysGone).toBe(49);
 });
 
-test('Luxembourg (1:1-1:1)', () => {
+test('Luxembourg (1:1-2:2)', () => {
   const params = [
     {
       name: 'Luxembourg',
