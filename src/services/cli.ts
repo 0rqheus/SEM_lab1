@@ -1,7 +1,7 @@
 import * as readline from 'node:readline/promises';
 import { stdin as input, stdout as output } from 'node:process';
-import { z } from 'zod';
 import { CountryParams, CountryParamsSchema } from '../interfaces/CountryParams';
+import { CountryCountSchema } from '../interfaces/CountryCount';
 
 export async function getUserInput() {
   const inputData: CountryParams[][] = [];
@@ -11,7 +11,7 @@ export async function getUserInput() {
 
   while (userInput !== '0') {
     userInput = await rl.question('Enter number of countries:\n');
-    const countriesCount = z.number().max(20).parse(Number(userInput));
+    const countriesCount = CountryCountSchema.parse(Number(userInput));
     const arr: CountryParams[] = []
 
     for (let i = 0; i < countriesCount; i++) {
